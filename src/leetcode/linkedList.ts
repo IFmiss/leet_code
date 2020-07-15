@@ -2,7 +2,7 @@
  * 链表数据结构
  */
 
-interface INode<T> {
+export interface INode<T> {
   val: T,
   next?: INode<T>
 }
@@ -19,7 +19,7 @@ class Node<T> {
 export default class LinkedList<T> {
   head: INode<any> = null
   constructor() {
-    this.head = new Node<string>('head')
+    this.head = new Node<string>('header')
   }
 
   find = (item: T) => {

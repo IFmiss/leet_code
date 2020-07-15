@@ -138,4 +138,40 @@ export default class LeetCode {
     }
     return Math.min(getCount('b'), getCount('a'), ~~(getCount('l') / 2), ~~(getCount('o') / 2), getCount('n'))
   }
+
+  /**
+   * 面试题 10.01. 合并排序的数组
+   */
+  // let A = [1,2,3,0,0,0],
+  //     m = 3,
+  //     B = [2,5,6],
+  //     n = 3
+  // let mergeSortArray = (A, m, B, n) => {
+  //   if (m === 0) return B
+  //   if (n === 0) return A
+  //   let i = 0;
+  //   let j = 0;
+  //   let r = []
+  //   while (i < m && j < n) {
+  //     if (A[i] > B[j]) {
+  //       r.push(B[j])
+  //       j ++
+  //     } else {
+  //       r.push(A[i])
+  //       i ++
+  //     }
+  //   }
+
+  //   while (j < m) {
+  //     r.push(B[j])
+  //     j++
+  //   }
+
+  //   while (i < n) {
+  //     r.push(A[i])
+  //     i++
+  //   }
+  //   console.log(r)
+  // }
+  // mergeSortArray([1,2,3,0,0,0], 3, [2,5,6], 3)
 }

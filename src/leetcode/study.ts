@@ -1,4 +1,4 @@
-import LinkedList from "./linkedList";
+import LinkedList, { INode } from "./linkedList";
 
 /**
  * 编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。
@@ -40,21 +40,18 @@ export const reverseString = function(s: string[]) {
 //   console.log(toLink)
 // }
 
-export const reverseTo = (arr: any[]) => {
-  let i = 0;
-  let len = arr.length;
-  let now: any = []
-
-  const aaa = (item: any) => {
-    console.log('item', item)
-    if (item == null || arr[i + 1] == null) {
-      return item
-    }
-
-    now.push(item, aaa(arr[++i]))
-    console.log(now)
+export function reverseTo(head: INode<number>) {
+  if (head == null || head.next == null) {
+    return head
   }
-  aaa(arr[i])
-  return now
+
+  // console.log(head)
+
+  const seconed = head.next
+  console.log('next.next', seconed.next)
+  head.next = reverseTo(seconed.next)
+  console.log('----------', seconed.next)
+  seconed.next = head
+  return seconed
 }
 
