@@ -3,7 +3,7 @@ import './style.less';
 import LogUtils from 'd-utils/lib/logUtils';
 import * as DeviceUtils from 'd-utils/lib/deviceUtils';
 import LeetCode from './leetcode/index'
-import { reverseString, reverseTb } from './leetcode/study'
+import { reverseString, reverseTo } from './leetcode/study'
 import LinkList from './leetcode/linkedList'
 
 console.log(reverseString(["h","e","l","l","o"]))
@@ -16,7 +16,7 @@ console.log(reverseString(["H","a","n","n","a","h"]))
 // link.insert(4, 3)
 // link.display()
 
-reverseTb([1, 2, 3, 4])
+reverseTo([1, 2, 3, 4])
 
 // LogUtils.logInfo('WEBPACK-TPL', 'HELLO')
 DeviceUtils.checkLayoutOrientation()

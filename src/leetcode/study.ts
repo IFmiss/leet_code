@@ -28,13 +28,33 @@ export const reverseString = function(s: string[]) {
 /**
  * 给定 1->2->3->4, 你应该返回 2->1->4->3.
  */
+// [1, 2, 3, 4]  => [2, 1, 3, 4]
 
-export const reverseTb = (arr: any[]) => {
-  let lk = new LinkedList()
-  const toLink = arr.reduce((item, current) => {
-    console.log('item, current', item, current)
-    lk.insert(current, item)
-    return item
-  }, lk.head.val)
-  console.log(toLink)
+// export const reverseTb = (arr: any[]) => {
+//   let lk = new LinkedList()
+//   const toLink = arr.reduce((item, current) => {
+//     console.log('item, current', item, current)
+//     lk.insert(current, item)
+//     return item
+//   }, lk.head.val)
+//   console.log(toLink)
+// }
+
+export const reverseTo = (arr: any[]) => {
+  let i = 0;
+  let len = arr.length;
+  let now: any = []
+
+  const aaa = (item: any) => {
+    console.log('item', item)
+    if (item == null || arr[i + 1] == null) {
+      return item
+    }
+
+    now.push(item, aaa(arr[++i]))
+    console.log(now)
+  }
+  aaa(arr[i])
+  return now
 }
+
