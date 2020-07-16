@@ -2,14 +2,9 @@
  * 链表数据结构
  */
 
-export interface INode<T> {
-  val: T,
-  next?: INode<T>
-}
-
-class Node<T> {
-  val: T = null
-  next: INode<T>
+export class Node<T> {
+  val: T | null = null
+  next: Node<T> | null
   constructor(value: T) {
     this.val = value
     this.next = null
@@ -17,9 +12,9 @@ class Node<T> {
 }
 
 export default class LinkedList<T> {
-  head: INode<any> = null
+  head: Node<T> | null = null
   constructor() {
-    this.head = new Node<string>('header')
+    this.head = new Node<any>('header')
   }
 
   find = (item: T) => {
@@ -31,19 +26,27 @@ export default class LinkedList<T> {
   }
 
   insert = (value: T, item: T) => {
+    // console.log('value', value)
     const newNode = new Node<T>(value)
     const currentNode = this.find(item)
     console.log(currentNode)
-    newNode.next = currentNode.next
-    currentNode.next = newNode
+    newNode.next = currentNode?.next || null
+    currentNode && (currentNode.next = newNode)
   }
+}
 
-  display = () => {
-    let currentNode = this.head
-    while(currentNode.next !== null) {
-      console.log('currentNode.val: ', currentNode.val)
-      currentNode = currentNode.next
+export function linkToArray<T> (link: Node<T> | null) {
+  let arr: Array<T> = []
+  const toArray = (item: Node<T> | null) => {
+    if (item == null) {
+      return
     }
-    console.log('currentNode.val: ', currentNode.val)
+
+    if (item.val !== null) {
+      arr.push(item.val)
+      toArray(item.next)
+    }
   }
+  toArray(link || null)
+  return arr
 }

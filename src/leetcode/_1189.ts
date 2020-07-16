@@ -22,7 +22,7 @@ export default function _1189 (str: string) {
   if (str.length === s.length && str !== s) return 0
   function getCount (s: string) {
     const re = "/[" + s + "]/g"
-    return str.match(eval(re)) ? str.match(eval(re)).length : 0
+    return str.match(eval(re)) ? (str.match(eval(re))?.length || 0) : 0
   }
   return Math.min(getCount('b'), getCount('a'), ~~(getCount('l') / 2), ~~(getCount('o') / 2), getCount('n'))
 }
