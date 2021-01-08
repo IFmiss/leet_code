@@ -51,3 +51,22 @@ export function swapPairs(head: Node<number | string | null> | null) {
   return seconed
 }
 
+
+
+let memo: any = {};
+function fib(n: number): number {
+  if (n == 0) return 0
+  if (n == 1) return 1
+  console.log(n, memo)
+  if (memo[n]) return memo[n]
+  memo[n] = fib(n - 1) + fib(n - 2)
+  return memo[n];
+};
+
+export function fibArr(n: number): number {
+  let arr = [0, 1];
+  for (let i = 2; i <= n; i++) {
+    arr[i] = arr[i - 1] + arr[i - 2];
+  }
+  return arr[n];
+}
