@@ -9,11 +9,11 @@ import { climbStairs } from './leetcode/_70';
 import { add, fact, fact1, sum5, sum5Old } from './leetcode/weidigui';
 import reverseString from './leetcode/_344';
 import reverseList from './leetcode/_206';
+import myPow from './leetcode/_50';
 
 // console.log(reverseString(["h","e","l","l","o"]))
 // console.log(reverseString(["H","a","n","n","a","h"]))
 // console.log(reverseTb([1, 2, 3, 4]))
-console.log(fib(30))
 console.log(fibArr(30));
 
 const link = new LinkedList<number | null>()
