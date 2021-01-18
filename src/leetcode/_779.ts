@@ -23,5 +23,16 @@
 // 第三行: 0110
 // 第四行: 01101001
 
-function kthGrammar(N: number, K: number): number {
+export default function kthGrammar(N: number, K: number): number {
+  if (N === 1 || K === 1) return 0;
+  if (K === 2) return 1;
+  // 如果 K 是奇数，则 N,K 对应的值为父级（N-1，((K + 1)) / 2）的位置的值
+  if (K % 2) {
+    return kthGrammar(N-1, (K + 1) / 2);
+  } else {
+    // 偶数 
+    // 上一行为0 下一行为1
+    // 上一行为1 下一行为0
+    return kthGrammar(N-1, K / 2) === 0 ? 1 : 0;
+  }
 };
