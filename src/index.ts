@@ -11,12 +11,13 @@ import reverseString from './leetcode/_344';
 import reverseList from './leetcode/_206';
 import myPow from './leetcode/_50';
 import kthGrammar from './leetcode/_779';
+import generateTrees from './leetcode/_95';
 
 // console.log(reverseString(["h","e","l","l","o"]))
 // console.log(reverseString(["H","a","n","n","a","h"]))
 // console.log(reverseTb([1, 2, 3, 4]))
 console.log(kthGrammar(4, 4));
-
+console.log(generateTrees(3));
 const link = new LinkedList<number | null>()
 link.insert(1, link.head?.val || null)
 link.insert(2, 1)
