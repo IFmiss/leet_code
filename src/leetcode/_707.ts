@@ -41,6 +41,18 @@ export default class MyLinkedList {
   constructor() {}
 
   get(index: number): number {
+    return this.getList(index)?.val || -1;
+  }
+
+  getList(index: number): ListNode | null {
+    if (index > length || index < 0) return null;
+    let pos = 0;
+    let curList = this.head;
+    while (index > pos) {
+      curList = curList?.next || null;
+      pos++;
+    }
+    return curList;
   }
 
   addAtHead(val: number): void {
@@ -61,7 +73,20 @@ export default class MyLinkedList {
   }
 
   addAtIndex(index: number, val: number): void {
-
+    if (index === this.length) {
+      this.addAtTail(val);
+    }
+    if (index === 0) {
+      this.addAtHead(val);
+    }
+    if (index > 0 && index < this.length) {
+      // 新增
+      const indexList = this.getList(index) as ListNode;
+      const addList = new ListNode(val);
+      addList.next = indexList.next;
+      indexList.next = addList;
+      this.length ++;
+    }
   }
 
   deleteAtIndex(index: number): void {
