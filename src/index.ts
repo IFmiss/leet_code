@@ -12,12 +12,26 @@ import reverseList from './leetcode/_206';
 import myPow from './leetcode/_50';
 import kthGrammar from './leetcode/_779';
 import generateTrees from './leetcode/_95';
+import MyLinkedList from './leetcode/_707';
+
+var obj = new MyLinkedList();
+obj.addAtHead(1);
+console.log(obj);
+obj.addAtTail(3);
+console.log(obj);
+obj.addAtIndex(1,2);   //链表变为1-> 2-> 3
+console.log(obj);
+const crt = obj.get(1);            //返回2
+console.log(crt);
+obj.deleteAtIndex(1);  //现在链表是1-> 3
+const crt1 = obj.get(1); 
+console.log(crt1);
 
 // console.log(reverseString(["h","e","l","l","o"]))
 // console.log(reverseString(["H","a","n","n","a","h"]))
 // console.log(reverseTb([1, 2, 3, 4]))
 console.log(kthGrammar(4, 4));
-console.log(generateTrees(3));
+// console.log(generateTrees(3));
 const link = new LinkedList<number | null>()
 link.insert(1, link.head?.val || null)
 link.insert(2, 1)

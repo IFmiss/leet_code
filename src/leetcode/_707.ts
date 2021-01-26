@@ -45,11 +45,11 @@ export default class MyLinkedList {
   }
 
   getList(index: number): ListNode | null {
-    if (index > length || index < 0) return null;
+    if (index > this.length || index < 0) return null;
     let pos = 0;
     let curList = this.head;
-    while (index > pos) {
-      curList = curList?.next || null;
+    while (pos < index) {
+      curList = (curList as ListNode).next || null;
       pos++;
     }
     return curList;
@@ -70,6 +70,20 @@ export default class MyLinkedList {
   }
 
   addAtTail(val: number): void {
+    const node = new ListNode(val);
+    const _lastTail = this.tail;
+    this.tail = node;
+    // 如果已经有过 tail，则在原来的tail后加一个 linkList
+    if (_lastTail) {
+      _lastTail.next = this.tail;
+    }
+
+    // 如果不存在head 则帮他添加
+    if (!this.head) {
+      this.head = node;
+      this.head.next = null;
+    }
+    this.length ++;
   }
 
   addAtIndex(index: number, val: number): void {
@@ -81,16 +95,42 @@ export default class MyLinkedList {
     }
     if (index > 0 && index < this.length) {
       // 新增
+      console.info(index)
       const indexList = this.getList(index) as ListNode;
+      console.info('indexList', indexList, this.head);
       const addList = new ListNode(val);
-      addList.next = indexList.next;
+      addList.next = indexList?.next;
       indexList.next = addList;
       this.length ++;
     }
   }
 
   deleteAtIndex(index: number): void {
+    if (index > 0 && index < this.length) {
+      let pos = 0;
+      let prev: ListNode | null = null;
+      let curList = this.head;
+      // 头到index 找到current 和 prev
+      while (pos < index) {
+        prev = curList;
+        curList = (curList as ListNode).next;
+        pos ++;
+      }
 
+      // prev 的next 则跳过 current ，直接连接current 的 next 上的linkList
+      (prev as ListNode).next = curList?.next || null;
+
+      // 判断删除的是否是最后一个
+      if (index === this.length - 1) {
+        this.tail = prev;
+      }
+      this.length --;
+    } else if (index === 0) {
+      if (this.head) {
+        this.head = this.head?.next;
+        this.length --;
+      }
+    }
   }
 }
 
