@@ -67,6 +67,7 @@ export default class MyLinkedList {
       this.tail = node;
       this.tail.next = null;
     }
+    this.length ++;
   }
 
   addAtTail(val: number): void {
@@ -95,12 +96,10 @@ export default class MyLinkedList {
     }
     if (index > 0 && index < this.length) {
       // 新增
-      console.info(index)
-      const indexList = this.getList(index) as ListNode;
-      console.info('indexList', indexList, this.head);
+      const prevList = this.getList(index - 1) as ListNode;
       const addList = new ListNode(val);
-      addList.next = indexList?.next;
-      indexList.next = addList;
+      addList.next = prevList?.next;
+      prevList.next = addList;
       this.length ++;
     }
   }

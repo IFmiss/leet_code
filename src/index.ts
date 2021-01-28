@@ -16,16 +16,17 @@ import MyLinkedList from './leetcode/_707';
 
 var obj = new MyLinkedList();
 obj.addAtHead(1);
-console.log(obj);
+console.log(JSON.stringify(obj));
 obj.addAtTail(3);
-console.log(obj);
-obj.addAtIndex(1,2);   //链表变为1-> 2-> 3
-console.log(obj);
+console.log(JSON.stringify(obj));
+obj.addAtIndex(1, 2);   //链表变为1-> 2-> 3
+console.log(JSON.stringify(obj));
 const crt = obj.get(1);            //返回2
-console.log(crt);
+console.log('crt' + JSON.stringify(crt));
 obj.deleteAtIndex(1);  //现在链表是1-> 3
 const crt1 = obj.get(1); 
-console.log(crt1);
+console.log(JSON.stringify(obj));
+console.log('crt1' + JSON.stringify(crt1));
 
 // console.log(reverseString(["h","e","l","l","o"]))
 // console.log(reverseString(["H","a","n","n","a","h"]))
