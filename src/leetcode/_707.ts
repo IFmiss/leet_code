@@ -25,9 +25,9 @@
 // - 操作次数将在  [1, 1000] 之内。
 // - 请不要使用内置的 LinkedList 库。
 
-class ListNode {
+class NodePerte {
   val;
-  next: ListNode | null;
+  next: NodePerte | null;
   constructor(val: number) {
     this.val = val;
     this.next = null;
@@ -35,21 +35,22 @@ class ListNode {
 }
 
 export default class MyLinkedList {
-  head: ListNode | null = null;
-  tail: ListNode | null = null;
+  head: NodePerte | null = null;
+  tail: NodePerte | null = null;
   length: number = 0;
   constructor() {}
 
   get(index: number): number {
-    return this.getList(index)?.val || -1;
+    let list = this.getList(index);
+    return list ? list.val : -1;
   }
 
-  getList(index: number): ListNode | null {
+  getList(index: number): NodePerte | null {
     if (index > this.length || index < 0) return null;
     let pos = 0;
     let curList = this.head;
     while (pos < index) {
-      curList = (curList as ListNode).next || null;
+      curList = (curList as NodePerte).next;
       pos++;
     }
     return curList;
@@ -58,7 +59,7 @@ export default class MyLinkedList {
   addAtHead(val: number): void {
     const lastHead = this.head;
     // 创建一个list node 节点
-    const node = new ListNode(val);
+    const node = new NodePerte(val);
     node.next = lastHead;
     this.head = node;
     // 如果没有tail 相当于首次初始化添加head
@@ -71,7 +72,7 @@ export default class MyLinkedList {
   }
 
   addAtTail(val: number): void {
-    const node = new ListNode(val);
+    const node = new NodePerte(val);
     const _lastTail = this.tail;
     this.tail = node;
     // 如果已经有过 tail，则在原来的tail后加一个 linkList
@@ -89,35 +90,27 @@ export default class MyLinkedList {
 
   addAtIndex(index: number, val: number): void {
     if (index === this.length) {
-      this.addAtTail(val);
+      return this.addAtTail(val);
     }
     if (index === 0) {
-      this.addAtHead(val);
+      return this.addAtHead(val);
     }
     if (index > 0 && index < this.length) {
-      // 新增
-      const prevList = this.getList(index - 1) as ListNode;
-      const addList = new ListNode(val);
-      addList.next = prevList?.next;
-      prevList.next = addList;
+      let prevList = this.getList(index - 1);
+      const addList = new NodePerte(val);
+      addList.next = prevList?.next ?? null;
+      (prevList as NodePerte).next = addList;
       this.length ++;
     }
   }
 
   deleteAtIndex(index: number): void {
     if (index > 0 && index < this.length) {
-      let pos = 0;
-      let prev: ListNode | null = null;
-      let curList = this.head;
-      // 头到index 找到current 和 prev
-      while (pos < index) {
-        prev = curList;
-        curList = (curList as ListNode).next;
-        pos ++;
-      }
+      let prev = this.getList(index - 1);
+      let curList = prev?.next;
 
       // prev 的next 则跳过 current ，直接连接current 的 next 上的linkList
-      (prev as ListNode).next = curList?.next || null;
+      (prev as NodePerte).next = curList?.next || null;
 
       // 判断删除的是否是最后一个
       if (index === this.length - 1) {

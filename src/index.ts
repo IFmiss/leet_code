@@ -15,18 +15,35 @@ import generateTrees from './leetcode/_95';
 import MyLinkedList from './leetcode/_707';
 
 var obj = new MyLinkedList();
+obj.addAtHead(7);
+console.log(JSON.stringify(obj));
+obj.addAtHead(2);
+console.log(JSON.stringify(obj));
 obj.addAtHead(1);
 console.log(JSON.stringify(obj));
-obj.addAtTail(3);
+obj.addAtIndex(3, 0);
 console.log(JSON.stringify(obj));
-obj.addAtIndex(1, 2);   //链表变为1-> 2-> 3
+obj.deleteAtIndex(2);
+obj.addAtHead(6);
+obj.addAtTail(4)
 console.log(JSON.stringify(obj));
-const crt = obj.get(1);            //返回2
-console.log('crt' + JSON.stringify(crt));
-obj.deleteAtIndex(1);  //现在链表是1-> 3
-const crt1 = obj.get(1); 
-console.log(JSON.stringify(obj));
-console.log('crt1' + JSON.stringify(crt1));
+console.log(JSON.stringify(obj.get(4)))
+// obj.addAtHead(4);
+// obj.addAtIndex(5, 0);
+// obj.addAtHead(6);
+
+
+// console.log(JSON.stringify(obj));
+// obj.addAtTail(3);
+// console.log(JSON.stringify(obj));
+// obj.addAtIndex(1, 2);   //链表变为1-> 2-> 3
+// console.log(JSON.stringify(obj));
+// const crt = obj.get(1);            //返回2
+// console.log('crt' + JSON.stringify(crt));
+// obj.deleteAtIndex(1);  //现在链表是1-> 3
+// const crt1 = obj.get(1); 
+// console.log(JSON.stringify(obj));
+// console.log('crt1' + JSON.stringify(crt1));
 
 // console.log(reverseString(["h","e","l","l","o"]))
 // console.log(reverseString(["H","a","n","n","a","h"]))
