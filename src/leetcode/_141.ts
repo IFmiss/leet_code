@@ -8,6 +8,7 @@ function hasCycle(head: ListNode | null): boolean {
   let fast: ListNode | null = head.next;
 
   while(slow !== fast) {
+    // 无环
     if (fast === null || fast.next === null) return false;
 
     slow = (slow as ListNode).next;
