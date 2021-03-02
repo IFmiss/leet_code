@@ -7,6 +7,20 @@ declare class ListNode {
   }
 }
 
+
+declare class ChildListNode {
+  val: number
+  prev: ChildListNode | null
+  next: ChildListNode | null
+  child: ChildListNode | null
+  constructor(val?: number, prev? : ChildListNode, next? : ChildListNode, child? : ChildListNode) {
+    this.val = (val===undefined ? 0 : val);
+    this.prev = (prev===undefined ? null : prev);
+    this.next = (next===undefined ? null : next);
+    this.child = (child===undefined ? null : child);
+  }
+}
+
 declare class TreeNode {
   val: number
   left: TreeNode | null

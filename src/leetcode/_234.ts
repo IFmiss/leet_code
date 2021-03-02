@@ -32,27 +32,28 @@
 // };
 
 function isPalindrome(head: ListNode | null): boolean {
-  if (!head) return false;
-  let slow = head;
-  let fast = head;
+  if(head === null || head.next === null) return true;
+  let slow: ListNode = head;
+  let fast: ListNode = head;
   let pre = null;
   let reverse = null;
+  // 快指针先动直到结束
   while(fast && fast.next) {
     pre = slow;
-    slow = slow.next;
-    fast = fast.next.next;
+    slow = slow.next as ListNode;
+    fast = fast.next.next as ListNode;
     pre.next = reverse;
     reverse = pre;
   }
   if (fast) {
-    slow = slow.next;
+    slow = slow.next as ListNode;
   }
 
   while(slow) {
-    if (slow.val !== reverse.val) {
+    if (slow.val !== reverse?.val) {
       return false;
     }
-    slow = slow.next;
+    slow = slow.next as ListNode;
     reverse = reverse?.next;
   }
   return true;
