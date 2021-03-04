@@ -31,7 +31,15 @@ function rotateRight(head: ListNode | null, k: number): ListNode | null {
     caclL = caclL.next;
   }
 
-  if (length) {
+  let pos = k % length;
+  let slow = head;
+  let fast = head;
+  while (length > 0) {
+    length --;
+    fast = fast.next as ListNode;
+  }
+
+  while (fast.next) {
 
   }
 };
