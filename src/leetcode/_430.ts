@@ -12,17 +12,17 @@ function flatten(head: ChildListNode | null): ChildListNode | null {
       let next = current.next;
 
       current.next = child;
-      child.prev = current;
       current.child = null;
+      child.prev = current;
 
-      while (current.next) {
-        current = current?.next;
+      while (child.next) {
+        child = child?.next;
       }
 
-      current.next = next;
+      child.next = next;
 
       if (next) {
-        next.prev = current;
+        next.prev = child;
       }
     }
     // 顶层后移
