@@ -21,25 +21,31 @@
 // 向右旋转 4 步: 2->0->1->NULL
 
 function rotateRight(head: ListNode | null, k: number): ListNode | null {
-  if (k === 0) return head;
   if (!head) return head;
 
   let length = 0;
   let caclL = head;
   while(caclL) {
     length ++;
-    caclL = caclL.next;
+    caclL = caclL.next as ListNode;
   }
 
   let pos = k % length;
+  if (pos === 0) return head;
   let slow = head;
   let fast = head;
-  while (length > 0) {
-    length --;
+  while (pos > 0) {
+    pos --;
     fast = fast.next as ListNode;
   }
 
-  while (fast.next) {
-
+  while (fast && fast.next) {
+    slow = slow.next as ListNode;
+    fast = fast.next;
   }
+
+  let newHead = slow.next;
+  slow.next = null;
+  fast.next = head;
+  return newHead;
 };
